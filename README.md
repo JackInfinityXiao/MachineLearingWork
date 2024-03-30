@@ -1,3 +1,6 @@
+You can read work.pdf to know detail information
+下面这些仅供参考，具体请看work.pdf
+
 1、问题描述
 根据给定数据，选定模型进行拟合，利用平方误差：mean squared error(MSE)作为模型的度量，重点指出最后模型的测试误差。 
 
@@ -21,9 +24,9 @@ train_y = data["y_complex"]
 
 3.3、异常值的处理
 
-	 ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/172dcfca-3afe-4938-a687-5f0f84f652f6)
+![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/172dcfca-3afe-4938-a687-5f0f84f652f6)
 
-	图1 complex_nonlinear_data.csv数据的散点图
+图1 complex_nonlinear_data.csv数据的散点图
 
 
 
