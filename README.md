@@ -9,7 +9,7 @@
 	pandas:读取csv文件数据，剔除异常值
 	numpy: 在拟合模型中，将数据转换为numpy数组进行高效的数学运算。
 	seaborn:用于生成箱状图，分析数据的异常值。
-  matplotlib:用于数据的可视化分析。
+  	matplotlib:用于数据的可视化分析。
 	sklearn:用于机器学习，训练回归模型并进行相应的评估。
 
 3.2、数据的导入
@@ -20,13 +20,16 @@ train_x = data["x"]
 train_y = data["y_complex"]
 
 3.3、异常值的处理
+
  ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/172dcfca-3afe-4938-a687-5f0f84f652f6)
 
 图1 complex_nonlinear_data.csv数据的散点图
 
 
 
+![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/f38bb6b4-48f2-43d2-88d9-f1ce7bda4ee8)
 
+![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/a6d43ae8-b501-40fa-b435-a0a48f72c31b)
 
 
 
@@ -60,7 +63,8 @@ X = train_x.values.reshape(-1, 1)
 
 3.4、K折交叉验证：
 将原始训练数据集划分为训练集和测试集，避免了为了追求高准确率而在训练集上产生过拟合，从而使得模型在样本外的数据上预测准确率高。
-   
+   ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/92bbb16c-ed88-4b4d-be14-cf94911e5f15)
+
 图4 十折交叉验证原理图
 由于数据规模较小，本模型选用十折交叉验证进行分析，此时训练集和测试集的数据比为9:1。
 Kfold = KFold(n_splits=10, shuffle=True)
@@ -82,7 +86,8 @@ def PolynomialRegression(degree):
 5、模型的训练与评估
 5.1、学习曲线的建立和模型训练
 通过对多项式次数degree进行一定范围的搜索，得出符合一定规律的Mse_train和Mse_test曲线：
- 
+ ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/9e80d301-2f24-4ff7-a428-0b72bc0d10cb)
+
 图5 学习曲线
 由曲线观察分析，当Degree of polynomoial逐渐增加时，mse_train曲线一直下降,而mse_test曲线先下降后明显上升，说明出现过拟合现象。因此本模型选择Mse_test最小的时刻的Degree of polynomial = 15作为多项式回归模型最优的degree参数。
 同时获得训练数据集最优的Mse= 0.27359363929663677。
@@ -101,7 +106,8 @@ for degree in range(30):
     mse_train.append(np.mean(scores_train))
 # 最优次项
 print(mse_test.index(min(mse_test)))
- 
+ ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/6b18da7b-fba4-4438-b311-6ec3280c9aec)
+
 图6 训练数据的拟合曲线
 # 回归模型
         poly_reg = PolynomialRegression(degree)
@@ -111,7 +117,8 @@ print(mse_test.index(min(mse_test)))
 
 5.2、模型的评估
 将最终的测试数据带入训练好的模型之中：
- 
+ ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/d7626d12-bb4b-402c-b1ea-7afde1e852dd)
+
 图7 测试数据的拟合曲线
 最终所得测试数据的Mse= 0.3384791555416797。由测试数据的回归曲线可以看出，degree=15时的多项式回归模型可以较好的回归出数据的趋势，Mse的范围也比较精确。由于训练和测试数据存在较大的噪声波动等影响，degree=15时的多项式回归模型已经可以较好的拟合出相应的数据。
 # 训练测试
