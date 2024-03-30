@@ -26,6 +26,7 @@ train_y = data["y_complex"]
 
 ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/172dcfca-3afe-4938-a687-5f0f84f652f6)
 
+
 图1 complex_nonlinear_data.csv数据的散点图
 
 
@@ -37,8 +38,9 @@ train_y = data["y_complex"]
 
 
   
-	  图2 IQR箱状图理论示意图                    图3 y_complex的箱状图
-	根据对相应散点图以及箱状图的分析可以发现，在 的范围以外存在着一定的离群值数据。
+图2 IQR箱状图理论示意图                    图3 y_complex的箱状图
+
+根据对相应散点图以及箱状图的分析可以发现，在 的范围以外存在着一定的离群值数据。
 利用四分位距方法（interquartile range, IQR）对异常数据进行处理，剔除异常值，并对x进行numpy数据转化：
 # IQR
 sns.boxenplot(train_y)
@@ -69,6 +71,7 @@ X = train_x.values.reshape(-1, 1)
    ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/92bbb16c-ed88-4b4d-be14-cf94911e5f15)
 
 图4 十折交叉验证原理图
+
 由于数据规模较小，本模型选用十折交叉验证进行分析，此时训练集和测试集的数据比为9:1。
 Kfold = KFold(n_splits=10, shuffle=True)
 for train_index, test_index in Kfold.split(X):
@@ -91,7 +94,9 @@ def PolynomialRegression(degree):
 通过对多项式次数degree进行一定范围的搜索，得出符合一定规律的Mse_train和Mse_test曲线：
  ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/9e80d301-2f24-4ff7-a428-0b72bc0d10cb)
 
+
 图5 学习曲线
+
 由曲线观察分析，当Degree of polynomoial逐渐增加时，mse_train曲线一直下降,而mse_test曲线先下降后明显上升，说明出现过拟合现象。因此本模型选择Mse_test最小的时刻的Degree of polynomial = 15作为多项式回归模型最优的degree参数。
 同时获得训练数据集最优的Mse= 0.27359363929663677。
 for degree in range(30):
@@ -111,7 +116,9 @@ for degree in range(30):
 print(mse_test.index(min(mse_test)))
  ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/6b18da7b-fba4-4438-b311-6ec3280c9aec)
 
+
 图6 训练数据的拟合曲线
+
 # 回归模型
         poly_reg = PolynomialRegression(degree)
         poly_reg.fit(X_train, Y_train)
@@ -122,7 +129,9 @@ print(mse_test.index(min(mse_test)))
 将最终的测试数据带入训练好的模型之中：
  ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/d7626d12-bb4b-402c-b1ea-7afde1e852dd)
 
+
 图7 测试数据的拟合曲线
+
 最终所得测试数据的Mse= 0.3384791555416797。由测试数据的回归曲线可以看出，degree=15时的多项式回归模型可以较好的回归出数据的趋势，Mse的范围也比较精确。由于训练和测试数据存在较大的噪声波动等影响，degree=15时的多项式回归模型已经可以较好的拟合出相应的数据。
 # 训练测试
 poly_reg = PolynomialRegression(mse_test.index(min(mse_test)))
