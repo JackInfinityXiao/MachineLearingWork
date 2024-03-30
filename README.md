@@ -21,9 +21,9 @@ train_y = data["y_complex"]
 
 3.3、异常值的处理
 
- ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/172dcfca-3afe-4938-a687-5f0f84f652f6)
+	 ![image](https://github.com/JackInfinityXiao/MachineLearingWork/assets/165129275/172dcfca-3afe-4938-a687-5f0f84f652f6)
 
-图1 complex_nonlinear_data.csv数据的散点图
+	图1 complex_nonlinear_data.csv数据的散点图
 
 
 
