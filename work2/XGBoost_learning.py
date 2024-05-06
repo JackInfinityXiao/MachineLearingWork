@@ -32,10 +32,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 xgb_model = XGBClassifier()
 xgb_model.fit(X_train, y_train)
 
-# xgb_pred = xgb_model.predict(X_test)
-# accuracy = accuracy_score(y_test, xgb_pred)
-# print("accuracy: ", accuracy)
-
 # Generate the data (500 datapoints)
 X1, labels1 = make_moons_3d(n_samples=500, noise=0.2)
 
