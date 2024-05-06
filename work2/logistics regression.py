@@ -33,10 +33,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 logreg = LogisticRegression()
 logreg.fit(X_train, y_train)
 
-# y1_pred = logreg.predict(X_test)
-# accuracy_test = accuracy_score(y_test, y1_pred)
-# print("Accuracy:", accuracy_test)
-
 # Generate the data (500 datapoints)
 X1, labels1 = make_moons_3d(n_samples=500, noise=0.2)
 
