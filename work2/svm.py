@@ -41,20 +41,6 @@ model2.fit(X_train, y_train)
 model3 = svm_model3
 model3.fit(X_train, y_train)
 
-# predictions1 = model1.predict(X_test)
-# accuracy_test1 = accuracy_score(y_test, predictions1)
-# print("Accuracy1:", accuracy_test1)
-
-
-# predictions2 = model2.predict(X_test)
-# accuracy_test2 = accuracy_score(y_test, predictions2)
-# print("Accuracy2:", accuracy_test2)
-
-# predictions3 = model3.predict(X_test)
-# accuracy_test3 = accuracy_score(y_test, predictions3)
-# print("Accuracy3:", accuracy_test3)
-
-
 X1, labels1 = make_moons_3d(n_samples=500, noise=0.2)
 
 predictions1 = model1.predict(X1)
